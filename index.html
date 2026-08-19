@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aurora Coffee Roasters — Small-Batch Specialty Coffee, Rotterdam</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+<style>
+  :root{
+    --coffee:#2d1e17; --coffee-soft:#4a352a; --cream:#faf6ef; --card:#ffffff;
+    --amber:#c47f3d; --amber-deep:#a05f22; --gold:#e0a45c; --muted:#8a7767;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--cream);color:var(--coffee);line-height:1.6}
+  h1,h2,h3,.brand{font-family:Georgia,"Times New Roman",serif}
+  a{color:var(--amber-deep)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  nav{position:sticky;top:0;background:rgba(250,246,239,.92);backdrop-filter:blur(8px);border-bottom:1px solid #e8ddcf;z-index:100}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-size:1.25rem;font-weight:700;color:var(--coffee);text-decoration:none;letter-spacing:.3px}
+  .brand span{color:var(--amber)}
+  .nav-links{display:flex;gap:28px;list-style:none}
+  .nav-links a{text-decoration:none;color:var(--coffee-soft);font-size:.95rem}
+  .nav-links a:hover{color:var(--amber-deep)}
+
+  header.hero{background:linear-gradient(135deg,#241610 0%,#3a2417 55%,#6b3f1d 100%);color:#f6ead9;padding:96px 0 84px;position:relative;overflow:hidden}
+  .hero::after{content:"☕";position:absolute;right:-30px;bottom:-60px;font-size:280px;opacity:.07;transform:rotate(-12deg)}
+  .hero h1{font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.15;max-width:640px}
+  .hero p.sub{margin-top:18px;font-size:1.15rem;color:#e8d3b4;max-width:560px}
+  .cta-row{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 26px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.98rem}
+  .btn-primary{background:var(--gold);color:#2b1a0e}
+  .btn-primary:hover{background:#eab470}
+  .btn-ghost{border:1px solid #b98d5e;color:#f0dfc4}
+  .btn-ghost:hover{background:rgba(255,255,255,.07)}
+
+  .badges{background:var(--coffee);color:#e9d8bd;font-size:.9rem}
+  .badges .wrap{display:flex;gap:8px 36px;flex-wrap:wrap;justify-content:center;padding:12px 24px}
+
+  section{padding:72px 0}
+  .kicker{text-transform:uppercase;letter-spacing:2.5px;font-size:.78rem;color:var(--amber-deep);font-weight:700}
+  h2{font-size:2rem;margin:6px 0 14px}
+  .lede{color:var(--muted);max-width:620px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:40px}
+  .card{background:var(--card);border:1px solid #eee3d2;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(45,30,23,.06)}
+  .card .art{height:150px;display:flex;align-items:center;justify-content:center;font-size:64px}
+  .art-1{background:linear-gradient(135deg,#1d1b2e,#4a3160)}
+  .art-2{background:linear-gradient(135deg,#f5d79e,#e2a55f)}
+  .art-3{background:linear-gradient(135deg,#8aa9a0,#4e7a6e)}
+  .card .body{padding:20px 22px 24px}
+  .card h3{font-size:1.2rem}
+  .card .origin{color:var(--muted);font-size:.86rem;margin:2px 0 10px}
+  .card p.notes{font-size:.94rem;min-height:44px}
+  .price-row{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+  .price{font-weight:700;font-size:1.12rem}
+  .tag{font-size:.72rem;background:#f4e8d6;color:var(--amber-deep);padding:4px 10px;border-radius:99px;font-weight:700;letter-spacing:.5px}
+
+  .banner{background:linear-gradient(120deg,#c47f3d,#a05f22);border-radius:18px;color:#fff7ec;padding:40px 44px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .banner h3{font-size:1.5rem}
+  .banner p{color:#ffe9cd;max-width:520px}
+  .banner .btn{background:#2d1e17;color:#f3e3c9}
+
+  .story{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .story .photo{background:linear-gradient(160deg,#3a2417,#6b3f1d);border-radius:16px;min-height:300px;display:flex;align-items:center;justify-content:center;font-size:110px}
+  @media(max-width:760px){.story{grid-template-columns:1fr}}
+
+  .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;margin-top:36px}
+  .quote{background:#fff;border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:22px 24px;font-size:.96rem}
+  .quote .who{margin-top:12px;color:var(--muted);font-size:.84rem;font-weight:600}
+
+  details{background:#fff;border:1px solid #eee3d2;border-radius:10px;padding:16px 20px;margin-top:12px}
+  summary{cursor:pointer;font-weight:600}
+  details p{margin-top:10px;color:var(--coffee-soft);font-size:.95rem}
+
+  footer{background:var(--coffee);color:#c9b294;padding:56px 0 40px;margin-top:40px}
+  footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:36px}
+  @media(max-width:700px){footer .cols{grid-template-columns:1fr}}
+  footer h4{color:#f0dfc4;margin-bottom:10px;font-size:1rem}
+  footer a{color:#dcbf97;text-decoration:none}
+  footer li{list-style:none;margin:6px 0;font-size:.92rem}
+  .fine{margin-top:36px;padding-top:18px;border-top:1px solid #4a352a;font-size:.8rem;color:#94806c}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="brand" href="#">☀ Aurora <span>Coffee Roasters</span></a>
+    <ul class="nav-links">
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker" style="color:#e0a45c">Roasted in Rotterdam · Since 2021</p>
+    <h1>Small-batch coffee, roasted every Tuesday. At your door within days of the roast.</h1>
+    <p class="sub">We source directly from twelve farms, roast in 15-kilo batches, and ship every order within 48 hours of roasting. Coffee the way it should taste.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#shop">Shop the roasts</a>
+      <a class="btn btn-ghost" href="#subscribe">Start a subscription — 10% off</a>
+    </div>
+  </div>
+</header>
+
+<div class="badges">
+  <div class="wrap">
+    <span>🚚 Free EU shipping over €35</span>
+    <span>🔥 Roast day: every Tuesday</span>
+    <span>💧 Swiss Water® decaf</span>
+    <span>🐕 Approved by Peaberry</span>
+  </div>
+</div>
+
+<section id="shop">
+  <div class="wrap">
+    <p class="kicker">The Line-up</p>
+    <h2>Current roasts</h2>
+    <p class="lede">All coffees are available as whole bean, espresso, filter, or French-press grind. 250 g recyclable bags with one-way valve.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="art art-1">🌑</div>
+        <div class="body">
+          <h3>Midnight Peak</h3>
+          <p class="origin">Espresso blend · Brazil &amp; Guatemala</p>
+          <p class="notes">Dark chocolate, black cherry, brown sugar. Built for milk drinks and moody mornings.</p>
+          <div class="price-row"><span class="price">€14.50</span><span class="tag">BESTSELLER</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="art art-2">🌅</div>
+        <div class="body">
+          <h3>First Light</h3>
+          <p class="origin">Single origin · Yirgacheffe, Ethiopia</p>
+          <p class="notes">Jasmine, bergamot, apricot. A bright, tea-like light roast for filter brewers.</p>
+          <div class="price-row"><span class="price">€15.75</span><span class="tag">LIGHT ROAST</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="art art-3">🌙</div>
+        <div class="body">
+          <h3>Solstice Decaf</h3>
+          <p class="origin">Single origin · Huila, Colombia</p>
+          <p class="notes">Caramel, red apple, cocoa. Swiss Water® processed — all the flavour, none of the jitters.</p>
+          <div class="price-row"><span class="price">€13.00</span><span class="tag">DECAF</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="subscribe" style="padding-top:0">
+  <div class="wrap">
+    <div class="banner">
+      <div>
+        <h3>Never run out again.</h3>
+        <p>Subscribe to any coffee and save 10% on every delivery. Pause, skip, or cancel anytime — no fees, no guilt trips.</p>
+      </div>
+      <a class="btn" href="#contact">Build my subscription</a>
+    </div>
+  </div>
+</section>
+
+<section id="story" style="padding-top:24px">
+  <div class="wrap story">
+    <div>
+      <p class="kicker">Our Story</p>
+      <h2>Two friends, one tiny roaster, zero compromises.</h2>
+      <p style="margin-bottom:14px">Aurora was founded in <strong>2021 in Rotterdam</strong> by Mara and Tomás, who met arguing over a burnt batch of Kenyan beans at a roasting course — and decided they could do better together.</p>
+      <p style="margin-bottom:14px">Today we roast in small 15-kilo batches on a restored 1987 Probat, source directly from twelve farms we visit ourselves, and pay on average 38% above Fairtrade minimums.</p>
+      <p>Quality control is handled by <strong>Peaberry</strong>, our espresso-brown dachshund and Chief Nap Officer, who has never once approved a bad batch.</p>
+    </div>
+    <div class="photo">🐕</div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="kicker">Kind words</p>
+    <h2>What our regulars say</h2>
+    <div class="quotes">
+      <div class="quote">"The Midnight Peak espresso ruined every café in my neighbourhood for me. Nothing else comes close."<div class="who">— Jasmijn V., Utrecht</div></div>
+      <div class="quote">"Ordered Monday night, beans roasted Tuesday, brewing Thursday morning. Absurdly fresh."<div class="who">— Henrik L., Copenhagen</div></div>
+      <div class="quote">"Finally a decaf that doesn't taste like punishment. The Solstice is my nightly ritual."<div class="who">— Amira K., Berlin</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="kicker">Quick answers</p>
+    <h2>Frequently asked</h2>
+    <details>
+      <summary>When will my order ship?</summary>
+      <p>We roast every Tuesday and ship every order within 48 hours of roasting. Most EU orders arrive within 2–4 business days of dispatch.</p>
+    </details>
+    <details>
+      <summary>Is shipping free?</summary>
+      <p>Yes — free shipping across the EU on orders over €35. Below that, a flat €4.95 applies.</p>
+    </details>
+    <details>
+      <summary>Can I return coffee?</summary>
+      <p>Unopened bags can be returned within 30 days. Opened a bag and not happy? Our Brew Guarantee has you covered — see the full FAQ.</p>
+    </details>
+    <p style="margin-top:18px"><a href="faq.html">Read the full FAQ →</a></p>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>☀ Aurora Coffee Roasters</h4>
+        <p style="font-size:.92rem;max-width:340px">Keileweg 18, 3029 BS Rotterdam, Netherlands.<br>Roastery visits by appointment.</p>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="mailto:hello@auroracoffee.example">hello@auroracoffee.example</a></li>
+          <li><a href="mailto:wholesale@auroracoffee.example">wholesale@auroracoffee.example</a></li>
+          <li>+31 10 000 0000</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <ul>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="kb/shipping-returns.txt">Shipping &amp; returns</a></li>
+          <li>Or ask the chat bubble ↘</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">© 2026 Aurora Coffee Roasters. A fictional storefront used to demo the Customer Help AI support widget.</p>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CUSTOMER HELP AI WIDGET — paste your installation snippet on
+     the next line (from Dashboard → Setup & Integrations):
+     ═══════════════════════════════════════════════════════════════ -->
+
+</body>
+</html>
